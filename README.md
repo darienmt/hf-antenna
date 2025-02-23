@@ -1,6 +1,11 @@
 # hf-antenna
 HF Antenna SWR data analysis
 
+## Description
+
+- [First installation and tunning](./EndfedAntenna.ipynb)
+- [First installation per band](./FirstInstallationPerBand.ipynb)
+
 ## Development
 
 ### Create venv and install dependencies
