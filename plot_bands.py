@@ -25,3 +25,6 @@ def plot_bands(path, title=""):
         print(f'{name} M : {nw}')
     
     fig.tight_layout()
+
+
+
