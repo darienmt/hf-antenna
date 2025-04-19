@@ -54,13 +54,17 @@ def plot_bands_comparative(paths, title=""):
     
     fig.tight_layout()
 
-def plot_all_in_one(paths, title=""):
+def plot_all_in_one(paths, title="", legends=None):
     fig = plt.figure(figsize=(15,5))      
     ax = fig.add_subplot(1,1,1)
     ax.set_title(title)
-    for path in paths:
+    for idx, path in enumerate(paths):
         nw = rf.Network(os.path.join(path, "All.s1p"), f_unit='mhz')
-        nw.plot_s_vswr(ax = ax, label=f'{path}')
-
-    # ax.get_legend().remove()
+        label = path if legends is None else legends[idx]
+        nw.plot_s_vswr(ax = ax, label=label)
+    for band in bands:
+        ax.axvline(x = band['low']*1000000, color='black', linestyle='--')
+        ax.axvline(x = band['up']*1000000, color='black', linestyle='--')
+    # ax.hlines(y=3.0, colors='red')
+    ax.set_facecolor("darkgray")
     fig.tight_layout()
