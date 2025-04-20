@@ -27,7 +27,7 @@ def plot_bands(path, title=""):
     fig.tight_layout()
 
 
-def plot_bands_comparative(paths, title=""):
+def plot_bands_comparative(paths, title="", legends=None):
     files_per_band_per_day = []
     for path in paths:
         files_per_band = {}
@@ -45,11 +45,11 @@ def plot_bands_comparative(paths, title=""):
         ax = fig.add_subplot(8,2, idx + 1)
         name = band["name"]
         ax.set_title(f'{name} M')
-        for files_per_band in files_per_band_per_day:
+        for bidx, files_per_band in enumerate(files_per_band_per_day):
             path = files_per_band[name]
             nw = rf.Network(path, f_unit='mhz')
-            nw.plot_s_vswr(ax = ax, label=f'{path}')     
-            print(f'{name} M : {nw}')
+            label = path if legends is None else legends[bidx]
+            nw.plot_s_vswr(ax = ax, label=label)
         
     
     fig.tight_layout()
