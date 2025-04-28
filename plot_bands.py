@@ -66,5 +66,5 @@ def plot_all_in_one(paths, title="", legends=None):
         ax.axvline(x = band['low']*1000000, color='black', linestyle='--')
         ax.axvline(x = band['up']*1000000, color='black', linestyle='--')
         
-    ax.set_facecolor("darkgray" if len(paths) > 1 else "white")
+    # ax.set_facecolor("darkgray" if len(paths) > 1 else "white")
     fig.tight_layout()
